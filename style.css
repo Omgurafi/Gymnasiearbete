@@ -53,7 +53,7 @@ body{
 .IntroText{
     color: black;
 }
-
+/*vv Typing Test vv*/
 .Stats{
     padding-top: 5%;
     display: flex;
@@ -104,7 +104,7 @@ body{
     padding-left: 2%;
     padding-right: 2%;
 }
-
+/*^^ Typing Test ^^*/
 footer{
     padding-top: 5%;
     background-color: #716868;
