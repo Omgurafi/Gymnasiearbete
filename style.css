@@ -39,7 +39,7 @@ body{
     color: white;
 }
 
-.Introduktion{
+.Header{
     margin: auto;
     width: 70%;
     height: 1000px;
@@ -49,41 +49,39 @@ body{
     text-align: left;
     text-align: center;
 }
-.IntroText{
+.HeaderText{
     color: black;
 }
 /*vv Typing Test vv*/
 .Stats{
-    padding-top: 5%;
+    padding-top: 3%;
     display: flex;
     justify-content: center;
 }
 
-.TimeText, .AccuracyText{
+.TimeText, .AccuracyText, .ErrorText, .WPMText, .CPMText{
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
 }
 
-.Time, .Accuracy{
+.TimeNum, .AccuracyNum, .ErrorNum, .WPMNum, .CPMNum{
+    padding-top: 10px;
+    font-size: 40px;
+}
+
+.Time, .Accuracy, .Errors, .CPM, .WPM{
     background-color: #5696CB;
     border: 4px solid black;
-    border-radius: 5%;
-    height: 70px;
-    width: 200px;
+    height: 100px;
+    width: 250px;
     color: white;
     text-shadow: 1px 2px grey;
+    margin-left: 70px;
+    margin-right: 70px
 }
 
-.Time{
-    margin-right: 3%;
-}
-
-.Accuracy{
-    margin-left: 3%;
-}
-
-.Display{
+.Quote{
     padding-top: 2%;
     padding-bottom: 2%;
     margin-top: 2%;
@@ -98,32 +96,29 @@ body{
     margin-right: 10%;
 }
 
-.DisplayText{
-    color: black;
-    padding-left: 2%;
-    padding-right: 2%;
-}
-
 .Input{
-    padding-top: 2%;
-    padding-bottom: 2%;
     margin-top: 1%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 60%;
+    width: 80%;
     height: auto;
     border: 4px solid black;
-    background-color: #dddddd;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
-.InputText{
-    color: black;
-    padding-left: 2%;
-    padding-right: 2%;
-    font-size: 25px;
+.InputArea{
+    font-size: 20px;
+    width: 100%;
+    height: 100px;
+}
+
+.RestartButton{
+    margin-top: 0.5%;
+    width: 300px;
+    height: 60px;
+    font-size: 30px;
+    justify-content: center;
 }
 
 /*^^ Typing Test ^^*/
@@ -157,7 +152,6 @@ body{
     height: 50px;
     border: 4px solid black;
 }
-
 
 /*^^ Reaction Speed ^^*/
 
