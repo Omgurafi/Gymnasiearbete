@@ -49,8 +49,9 @@ body{
     text-align: left;
     text-align: center;
 }
-.HeaderText{
+.IntroText{
     color: black;
+    font-size: 35px;
 }
 /*vv Typing Test vv*/
 .Stats{
