@@ -126,33 +126,52 @@ body{
 
 /*vv Reaction Speed vv*/
 
-#ClickBox{
-    background-color: red;
-    margin-top: 2%;
+#app {
     display: flex;
-    justify-content: center;
+    width: 500px;
+    height: 300px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+  }
+  
+  .click-area {
+    flex-grow: 1;
+  
+    display: flex;
     align-items: center;
+  
+    background: #950000;
+    cursor: pointer;
+  }
+  
+  .display-text {
+    padding: 24px;
     width: 100%;
-    height: 420px;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-}
-.ResultBoxes{
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+  }
+  
+  .recent-scores {
     display: flex;
-}
-
-.ResultBox1,.ResultBox2,.ResultBox3,.ResultBox4,.ResultBox5{
-    background-color: lightgoldenrodyellow;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin-top: 2%;
+    flex-direction: column;
+    width: 125px;
+    flex-shrink: 0;
+  }
+  
+  .score {
+    flex-grow: 1;
+  
     display: flex;
-    width: 20%;
-    justify-content: center;
     align-items: center;
-    height: 50px;
-    border: 4px solid black;
-}
+    justify-content: center;
+  
+    padding: 16px;
+  }
+  
+  .score:nth-child(odd) {
+    background: #eeeeee;
+  }
 
 /*^^ Reaction Speed ^^*/
 
