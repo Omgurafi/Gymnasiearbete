@@ -1,6 +1,4 @@
 //Problem 1: Mellanrummen mellan orden är osynliga och ofunktionella.
-//Problem 2: Restartknappen åker åt vänster efter man är klar.
-//Problem 3: WPM och CPM kommer inte upp efter man är klar.
 //Problem 4: Texten blir inte röd vid errors.
 
 //Fixa: Mer quotes
@@ -22,6 +20,7 @@ let quotes_array = [
 ];
 
 // selecting required elements
+let intro_text = document.querySelector(".IntroText");
 let timer_text = document.querySelector(".TimeNum");
 let accuracy_text = document.querySelector(".AccuracyNum");
 let error_text = document.querySelector(".ErrorNum");
@@ -149,8 +148,10 @@ function finishGame() {
 
   // display restart button
   restart_btn.style.display = "block";
+  restart_btn.style.margin = "auto";
+  restart_btn.style.marginTop = "30px";
 
-  // calculate cpm and wpm
+  // calculate cpm and wpmx§
   cpm = Math.round(((characterTyped / timeElapsed) * 60));
   wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
@@ -184,12 +185,11 @@ function resetValues() {
   quoteNo = 0;
   input_area.disabled = false;
 
+  intro_text.style.display = "none";        // Lägg till Ease in animation när intro_text försvinner
   input_area.value = "";
   quote_text.textContent = 'Click on the area below to start the game.';
   accuracy_text.textContent = 100;
   timer_text.textContent = timeLeft + 's';
   error_text.textContent = 0;
   restart_btn.style.display = "none";
-  cpm_group.style.display = "none";
-  wpm_group.style.display = "none";
 }
