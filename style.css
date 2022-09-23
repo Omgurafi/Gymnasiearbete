@@ -78,8 +78,8 @@ body{
     width: 250px;
     color: white;
     text-shadow: 1px 2px grey;
-    margin-left: 70px;
-    margin-right: 70px
+    margin-left: 50px;
+    margin-right: 50px
 }
 
 .Quote{
@@ -115,7 +115,7 @@ body{
 }
 
 .RestartButton{
-    margin-top: 0.5%;
+    margin-top: 30px;
     width: 300px;
     height: 60px;
     font-size: 30px;
@@ -133,7 +133,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 520px;
+    height: 420px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
