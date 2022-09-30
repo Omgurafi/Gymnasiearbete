@@ -1,38 +1,31 @@
-//Problem 1: Mellanrummen mellan orden är osynliga och ofunktionella.
-//Problem 4: Texten blir inte röd vid errors.
-
-//Fixa: Mer quotes
-
-
 // define the time limit
 let TIME_LIMIT = 60;
 
 // define quotes to be used
 let quotes_array = [
-    "Time is money, so why do you spend it on sleeping.",
-    "Once you get a little bit they just want to take you down.",
-    "It starts with success, and success is all about growing.",
-    "Started from the bottom, now we're here.",
-    "It all comes down to this next game.",
-    "It's going to be hard, but hard does not mean impossible.",
-    "Failure is the condiment that gives success its flavor.",
-    "There is no pause or rewind in life, it is continuously playing."
+  "Time is money, so why do you spend it on sleeping.",
+  "Once you get a little bit they just want to take you down.",
+  "It starts with success, and success is all about growing.",
+  "Started from the bottom, now we're here.",
+  "It all comes down to this next game.",
+  "It's going to be hard, but hard does not mean impossible.",
+  "Failure is the condiment that gives success its flavor.",
+  "There is no pause or rewind in life, it is continuously playing."
 ];
 
 // selecting required elements
-let intro_text = document.querySelector(".IntroText");
-let timer_text = document.querySelector(".TimeNum");
-let accuracy_text = document.querySelector(".AccuracyNum");
-let error_text = document.querySelector(".ErrorNum");
-let cpm_text = document.querySelector(".CPMnum");
-let wpm_text = document.querySelector(".WPMNum");
-let quote_text = document.querySelector(".Quote");
-let input_area = document.querySelector(".InputArea");
-let restart_btn = document.querySelector(".RestartButton");
-let cpm_group = document.querySelector(".CPM");
-let wpm_group = document.querySelector(".WPM");
-let error_group = document.querySelector(".Errors");
-let accuracy_group = document.querySelector("Accuracy");
+let timer_text = document.querySelector(".curr_time");
+let accuracy_text = document.querySelector(".curr_accuracy");
+let error_text = document.querySelector(".curr_errors");
+let cpm_text = document.querySelector(".curr_cpm");
+let wpm_text = document.querySelector(".curr_wpm");
+let quote_text = document.querySelector(".quote");
+let input_area = document.querySelector(".input_area");
+let restart_btn = document.querySelector(".restart_btn");
+let cpm_group = document.querySelector(".cpm");
+let wpm_group = document.querySelector(".wpm");
+let error_group = document.querySelector(".errors");
+let accuracy_group = document.querySelector(".accuracy");
 
 let timeLeft = TIME_LIMIT;
 let timeElapsed = 0;
@@ -148,10 +141,8 @@ function finishGame() {
 
   // display restart button
   restart_btn.style.display = "block";
-  restart_btn.style.margin = "auto";
-  restart_btn.style.marginTop = "30px";
 
-  // calculate cpm and wpmx§
+  // calculate cpm and wpm
   cpm = Math.round(((characterTyped / timeElapsed) * 60));
   wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
@@ -160,7 +151,7 @@ function finishGame() {
   wpm_text.textContent = wpm;
 
   // display the cpm and wpm
-  cpm_group.display = "block";
+  cpm_group.style.display = "block";
   wpm_group.style.display = "block";
 }
 
@@ -185,11 +176,12 @@ function resetValues() {
   quoteNo = 0;
   input_area.disabled = false;
 
-  intro_text.style.display = "none";        // Lägg till Ease in animation när intro_text försvinner
   input_area.value = "";
   quote_text.textContent = 'Click on the area below to start the game.';
   accuracy_text.textContent = 100;
   timer_text.textContent = timeLeft + 's';
   error_text.textContent = 0;
   restart_btn.style.display = "none";
+  cpm_group.style.display = "none";
+  wpm_group.style.display = "none";
 }
