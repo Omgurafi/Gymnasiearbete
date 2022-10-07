@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <header>
     <nav>
@@ -11,36 +14,28 @@
         <a href="Reaction Speed.html">Reaction Speed</a>
     </nav>
 </header>
-<body>
-    <p class="Titel">
-    Reaction Speed
-    </p>
-<div class="Header">
-    <p class="IntroText">
-    This test will test your Reaction Speed in milliseconds. After the red button is pressed, wait for the button to turn green.
-    As soon as the green color is displayed, press the button. Your average reaction speed will be revealed after 5 repetitions of the test.
-    </p>
-    <div id="app">
-        <div class="click-area">
-          <div class="display-text">Welcome. Click to start!</div>
-        </div>
-        <div class="recent-scores">
-          <div class="score">-</div>
-          <div class="score">-</div>
-          <div class="score">-</div>
-          <div class="score">-</div>
-          <div class="score">-</div>
-        </div>
+<!DOCTYPE html>
+  <body>
+    <div class="end-screen">
+      <div class="container">
+        <h1>Reaction Time Test</h1>
+        <div class="reaction-time-text">234 ms</div>
+        <button class="play-again-btn">Play Again</button>
+      </div>
     </div>
-    <!--
-    Lägg till grå aside på båda sidorna för att få bättre design och mer information om sidan    
-    -->
-    <footer>
-        <p class="FooterText">
-            By Adam Sandén and Lukas Gröningsson Björke | 20TE<br>
-            High School Project/Gymnasiearbete 2022/2023
-        </p>
-        </footer>
-<script src="JavaSpeed.js"></script>
-    </body>
+
+    <div class="main-menu active">
+      <div class="container">
+        <h1>Reaction Time Test</h1>
+        <p>Click as soon as you see the green color on the screen.</p>
+        <p>Click anywhere to start.</p>
+      </div>
+    </div>
+
+    <div class="clickable-area">
+      <div class="message">Click Now!</div>
+    </div>
+
+    <script src="JavaSpeed.js"></script>
+  </body>
 </html>
