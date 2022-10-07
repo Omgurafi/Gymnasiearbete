@@ -1,54 +1,108 @@
-const clickArea = document.querySelector(".click-area");
-const displayText = document.querySelector(".display-text");
-const scoreElements = document.querySelectorAll(".score");
+const mainMenu = document.querySelector(".main-menu");
+const clickableArea = document.querySelector(".clickable-area");
+const message = document.querySelector(".clickable-area .message");
+const endScreen = document.querySelector(".end-screen");
+const reactionTimeText = document.querySelector(
+  ".end-screen .reaction-time-text"
+);
+const playAgainBtn = document.querySelector(".end-screen .play-again-btn");
 
-const scoreHistory = [];
+let timer;
+let greenDisplayed;
+let timeNow;
+let waitingForStart;
+let waitingForGreen;
+let scores;
 
-const MINIMUM_MS_TILL_CHANGE = 3000;
-const MAXIMUM_MS_TILL_CHANGE = 10000;
+const init = () => {
+  greenDisplayed = false;
+  waitingForStart = false;
+  waitingForGreen = false;
+  scores = [];
+};
 
-let msSinceEpochOnTimeout = 0;
-let waitingForClick = false;
+init();
 
-function play() {
-  const msTillChange =
-    Math.floor(
-      Math.random() * (MAXIMUM_MS_TILL_CHANGE - MINIMUM_MS_TILL_CHANGE)
-    ) + MINIMUM_MS_TILL_CHANGE;
+const setGreenColor = () => {
+  clickableArea.style.backgroundColor = "#32cd32";
+  message.innerHTML = "Click Now!";
+  message.style.color = "#111";
+  greenDisplayed = true;
+  timeNow = Date.now();
+};
 
-  // Revert the colour back to red
-  clickArea.style.backgroundColor = null;
+const startGame = () => {
+  clickableArea.style.backgroundColor = "#c1121f";
+  message.innerHTML = "Wait for the Green Color.";
+  message.style.color = "#fff";
 
-  displayText.textContent = "";
+  let randomNumber = Math.floor(Math.random() * 4000 + 3000);
+  timer = setTimeout(setGreenColor, randomNumber);
 
-  setTimeout(() => {
-    msSinceEpochOnTimeout = Date.now();
+  waitingForStart = false;
+  waitingForGreen = true;
+};
 
-    clickArea.style.backgroundColor = "#009578";
-    waitingForClick = true;
-  }, msTillChange);
-}
+mainMenu.addEventListener("click", () => {
+  mainMenu.classList.remove("active");
+  startGame();
+});
 
-function addScore(score) {
-  // add score to array in index 0
-  scoreHistory.unshift(score);
+const endGame = () => {
+  endScreen.classList.add("active");
+  clearTimeout(timer);
 
-  for (let i = 0; i < Math.min(scoreHistory.length, 5); i++) {
-    const score = scoreHistory[i];
+  let total = 0;
 
-    scoreElements[i].textContent = `${score} ms`;
+  scores.forEach((s) => {
+    total += s;
+  });
+
+  let averageScore = Math.round(total / scores.length);
+
+  reactionTimeText.innerHTML = `${averageScore} ms`;
+};
+
+const displayReactionTime = (rt) => {
+  clickableArea.style.backgroundColor = "#faf0ca";
+  message.innerHTML = `<div class='reaction-time-text'>${rt} ms</div>Click to continue.`;
+  greenDisplayed = false;
+  waitingForStart = true;
+  scores.push(rt);
+
+  if (scores.length >= 3) {
+    endGame();
   }
-}
+};
 
-clickArea.addEventListener("click", () => {
-  if (waitingForClick) {
-    const score = Date.now() - msSinceEpochOnTimeout;
+const displayTooSoon = () => {
+  clickableArea.style.backgroundColor = "#faf0ca";
+  message.innerHTML = "Too Soon. Click to continue";
+  message.style.color = "#111";
+  waitingForStart = true;
+  clearTimeout(timer);
+};
 
-    waitingForClick = false;
-    displayText.textContent = `Your time was ${score} ms! Click to play again.`;
-
-    addScore(score);
-  } else {
-    play();
+clickableArea.addEventListener("click", () => {
+  if (greenDisplayed) {
+    let clickTime = Date.now();
+    let reactionTime = clickTime - timeNow;
+    displayReactionTime(reactionTime);
+    return;
   }
+
+  if (waitingForStart) {
+    startGame();
+    return;
+  }
+
+  if (waitingForGreen) {
+    displayTooSoon();
+  }
+});
+
+playAgainBtn.addEventListener("click", () => {
+  endScreen.classList.remove("active");
+  init();
+  startGame();
 });
