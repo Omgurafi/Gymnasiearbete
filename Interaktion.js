@@ -14,6 +14,7 @@ let quotes_array = [
 ];
 
 // selecting required elements
+let intro_text = document.querySelector(".IntroText");
 let timer_text = document.querySelector(".curr_time");
 let accuracy_text = document.querySelector(".curr_accuracy");
 let error_text = document.querySelector(".curr_errors");
@@ -153,6 +154,59 @@ function finishGame() {
   // display the cpm and wpm
   cpm_group.style.display = "block";
   wpm_group.style.display = "block";
+
+if(total_errors > 100){
+  wpm = 0;
+  wpm_text.textContent = "?";
+  intro_text.textContent = "Try to get less errors this time.";
+  intro_text.style.color = "black";
+}
+
+else
+  if(wpm<=10){
+    intro_text.textContent = "Have you ever touched a keyboard before?";
+    intro_text.style.color = "red";
+  }
+  else if(wpm>=11 && wpm<=20){
+    intro_text.textContent = "Stop typing with 2 fingers";
+    intro_text.style.color = "red";
+  }
+  else if(wpm>=21 && wpm<=30){
+    intro_text.textContent = "Below average, keep practicing";
+    intro_text.style.color = "orange";
+  }
+  else if(wpm>=31 && wpm<=40){
+    intro_text.textContent = "Getting close to the average typing speed";
+    intro_text.style.color = "orange";
+  }
+  else if(wpm>=41 && wpm<=50){
+    intro_text.textContent = "You are at the average typing speed, well done";
+    intro_text.style.color = "orange";
+  }
+  else if(wpm>=51 && wpm<=60){
+    intro_text.textContent = "Above average! Good job!";
+    intro_text.style.color = "yellow";
+  }
+  else if(wpm>=61 && wpm<=70){
+    intro_text.textContent = "Speed Requirement for most jobs, you're almost a proffesional!";
+    intro_text.style.color = "yellow";
+  }
+  else if(wpm>=71 && wpm<=80){
+    intro_text.textContent = "Way above average! Qualified for any typing job (if your accuracy is high)";
+    intro_text.style.color = "green";
+  }
+  else if(wpm>=81 && wpm<=90){
+    intro_text.textContent = "Any employers looking for a typist NEEDS you!";
+    intro_text.style.color = "green";
+  }
+  else if(wpm>=91 && wpm<=100){
+    intro_text.textContent = "You are DOUBLING the average typing speed!";
+    intro_text.style.color = "green";
+  }
+  else{
+    intro_text.textContent = "Top 1% of typists!?";
+    intro_text.style.color = "green";
+  }
 }
 
 
