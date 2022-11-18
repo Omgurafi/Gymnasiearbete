@@ -13,7 +13,7 @@ let quotes_array = [
   "There is no pause or rewind in life, it is continuously playing."
 ];
 
-// selecting required elements
+// Använder sig av HTML-elementen
 let intro_text = document.querySelector(".IntroText");
 let timer_text = document.querySelector(".curr_time");
 let accuracy_text = document.querySelector(".curr_accuracy");
@@ -42,15 +42,15 @@ function updateQuote() {
   quote_text.textContent = null;
   current_quote = quotes_array[quoteNo];
 
-  // separate each character and make an element 
-  // out of each of them to individually style them
+  // separera varje karaktär och skapa ett element
+  // av var och en av dem för att individuellt desgina dem
   current_quote.split('').forEach(char => {
     const charSpan = document.createElement('span')
     charSpan.innerText = char
     quote_text.appendChild(charSpan)
   })
 
-  // roll over to the first quote
+  // rulla över till första quoten
   if (quoteNo < quotes_array.length - 1)
     quoteNo++;
   else
@@ -59,11 +59,11 @@ function updateQuote() {
 
 function processCurrentText() {
 
-  // get current input text and split it
+  // hämta pågående input text och dela upp den
   curr_input = input_area.value;
   curr_input_array = curr_input.split('');
 
-  // increment total characters typed
+  // öka antalet skrivna tecken
   characterTyped++;
 
   errors = 0;
@@ -72,86 +72,86 @@ function processCurrentText() {
   quoteSpanArray.forEach((char, index) => {
     let typedChar = curr_input_array[index]
 
-    // characters not currently typed
+    // tecken som inte har skrivits än
     if (typedChar == null) {
       char.classList.remove('correct_char');
       char.classList.remove('incorrect_char');
 
-      // correct characters
+      // korrekta tecken 
     } else if (typedChar === char.innerText) {
       char.classList.add('correct_char');
       char.classList.remove('incorrect_char');
 
-      // incorrect characters
+      // felaktiga tecken
     } else {
       char.classList.add('incorrect_char');
       char.classList.remove('correct_char');
 
-      // increment number of errors
+      // öka antalet errors
       errors++;
     }
   });
 
-  // display the number of errors
+  // visa antalet errors
   error_text.textContent = total_errors + errors;
 
-  // update accuracy text
+  // uppdatera accuracy
   let correctCharacters = (characterTyped - (total_errors + errors));
   let accuracyVal = ((correctCharacters / characterTyped) * 100);
   accuracy_text.textContent = Math.round(accuracyVal);
 
-  // if current text is completely typed
-  // irrespective of errors
+  // om pågående text är helt skriven
+  // oavsett errors
   if (curr_input.length == current_quote.length) {
     updateQuote();
 
-    // update total errors
+    // uppdatera totala errors
     total_errors += errors;
 
-    // clear the input area
+    // clear:a input area
     input_area.value = "";
   }
 }
 
 function updateTimer() {
   if (timeLeft > 0) {
-    // decrease the current time left
+    // minska tiden som är kvar
     timeLeft--;
 
-    // increase the time elapsed
+    // öka tiden som har gått
     timeElapsed++;
 
-    // update the timer text
+    // uppdatera timer-texten
     timer_text.textContent = timeLeft + "s";
   }
   else {
-    // finish the game
+    // avsluta spelet
     finishGame();
   }
 }
 
 function finishGame() {
-  // stop the timer
+  // stoppa timern
   clearInterval(timer);
 
-  // disable the input area
+  // inaktivera input area
   input_area.disabled = true;
 
-  // show finishing text
+  // visa slutliga texten
   quote_text.textContent = "Click on restart to start a new game.";
 
-  // display restart button
+  // visa restartknappen
   restart_btn.style.display = "block";
 
-  // calculate cpm and wpm
+  // räkna ut cpm och wpm
   cpm = Math.round(((characterTyped / timeElapsed) * 60));
   wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
 
-  // update cpm and wpm text
+  // uppdatera cpm- och wpm-texten
   cpm_text.textContent = cpm;
   wpm_text.textContent = wpm;
 
-  // display the cpm and wpm
+  // visa cpm och wpm
   cpm_group.style.display = "block";
   wpm_group.style.display = "block";
 
