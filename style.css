@@ -1,0 +1,286 @@
+nav{
+    display: flex;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.imgLogo{
+  width: 250px;
+  height: 250px;
+  margin: 0 30px; /*Margin går först från top, sen left&right, sen bottom*/
+  float: left;
+}
+
+header{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4584b7;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+    font-size: 40px;
+    padding: 20px;
+    color: white;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Titel{
+    padding-bottom: 50px;
+    font-size: 50px;
+    text-align: center;
+    color: rgb(31, 28, 28);
+    font-weight: bold;
+}
+
+.headerDiv{
+    margin: auto;
+    width: 70%;
+    height: 1000px;
+    padding-top: 2%;
+    background-color: whitesmoke;
+    font-size: 30px;
+}
+
+
+.IntroText{
+    color: rgb(43, 39, 39);
+    font-size: 32px;
+}
+
+.container{
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+.lb_section{
+  width: 100%;
+  height: 400px;
+  margin: 100px auto 0; /*Margin går först från top, sen left&right, sen bottom*/
+  border-radius: 5px;
+  padding: 25px 40px; /*Padding går först från top, sen left&right*/
+  position: relative;
+  background-color: #4584b7;
+}
+
+.lb_section ul{
+  display: flex;
+}
+
+.lb_section ul li{
+  margin-right: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.lb_section ul li:hover,
+.lb_section ul li.active{ 
+  color: hsl(0, 20%, 83%);
+}
+
+li{
+  list-style: none;
+}
+
+.lb_wrap{
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  margin-left: -5%;
+  background-color: 0; /*Lägg till något här om möjligt*/
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.points{
+  font-size: 20px;
+}
+
+.lb_wrap .lb_item{
+  padding: 25px;
+}
+
+.lb_wrap .lb_item .lb_mem{
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid black;
+}
+
+.lb_wrap .lb_item .lb_mem:first-child{
+  padding-top: 0;
+}
+
+.lb_wrap .lb_item .lb_mem:last-child{
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lb_wrap .lb_mem, .img{
+  width: 50px;
+}
+
+.lb_wrap .lb_mem, .img img{
+  display: block;
+  width: 100%;
+}
+
+.lb_wrap .lb_item .name_bar{
+  margin: 0 20px;
+  width: calc(100% - 150px);
+}
+
+.lb_wrap .lb_item .name_bar p{
+  color: #3a3d51;
+}
+
+.lb_wrap .lb_item .name_bar p span{
+  margin-right: 5px;
+}
+
+.lb_wrap .lb_item .points{
+  width: 100px;
+  color: #3a3d51
+}
+
+.lb_wrap .lb_item .bar_wrap{
+  height: 5px;
+  width: 100%;
+  background: #f9a1a1;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lb_wrap .lb_item .bar_wrap .inner_bar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #fff;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/*vv Reaction Speed vv*/
+body {
+  margin: 0;
+}
+
+.clickable-area {
+  height: 83.4vh;
+  width: 100%;
+  cursor: pointer;
+  background: limegreen;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+
+.end-screen,
+.main-menu {
+  display: none;
+  position: fixed;
+  height: 89vh;
+  width: 100%;
+
+  background: #5696CB;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.main-menu.active,
+.end-screen.active {
+  display: grid;
+  place-items: center;
+}
+
+.main-menu {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 700px;
+  padding: 0 32px;
+}
+
+.main-menu h1 {
+  font-size: 70px;
+  margin: 8px 0;
+}
+
+.container p {
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 800;
+  margin: 0;
+}
+
+.end-screen h1 {
+  font-size: 30px;
+}
+
+.reaction-time-text {
+  font-size: 100px;
+  font-weight: 900;
+}
+
+.end-screen .play-again-btn {
+  border: none;
+  background: #faf0ca;
+  font-size: 20px;
+  padding: 8px 32px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+
+/*^^ Reaction Speed ^^*/
+
+footer{
+    padding-top: 5%;
+    background-color: #716868;
+    height: 500px;
+}
+
+.FooterText{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+a:link{
+    color: white;
+}
+
+a:hover{
+    color: hsl(0, 10%, 86%);
+}
