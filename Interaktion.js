@@ -38,6 +38,8 @@ let current_quote = "";
 let quoteNo = 0;
 let timer = null;
 
+var position = [];
+
 function updateQuote() {
   quote_text.textContent = null;
   current_quote = quotes_array[quoteNo];
@@ -208,16 +210,12 @@ else
     intro_text.style.color = "green";
   }
 
-  $.ajax({
-    type: "POST",
-    url: "index.php",
-    data: { variable: cpm },
-    success: function(response) {
-        console.log("Variable saved to database");
-    }
-});
-}
+  position.push(wpm);
 
+  localStorage.setItem("points", wpm);
+  var username = window.prompt("What username would you like to display?");
+  localStorage.setItem("username", username);
+}
 
 function startGame() {
 
@@ -226,7 +224,7 @@ function startGame() {
 
   // clear old and start a new timer
   clearInterval(timer);
-  timer = setInterval(updateTimer, 1000);
+  timer = setInterval(updateTimer, 100);
 }
 
 function resetValues() {
